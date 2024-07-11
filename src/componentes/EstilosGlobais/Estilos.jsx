@@ -3,10 +3,11 @@ import { Global } from "@emotion/react";
 const estilos = tema => {
     return {
         html: {
-            fontFamily: tema.fontFamily
+            fontFamily: tema.fontFamily,
         },
         body: {
-            margin: 0
+            margin: 0,
+            minHeight: '100%vh'
         }
     }
 }

@@ -6,6 +6,7 @@ const Label = styled.label`
     display: flex;
     flex-direction: column;
     gap: ${props => props.theme.espacamentos.xs};
+    margin-top: 14px;
 `
 const InputEstilizado = styled.input`
     border: 1px solid ${props => props.theme.cores.neutras.a};
@@ -18,11 +19,15 @@ const InputEstilizado = styled.input`
     padding: 0 16px;
 `
 
-export default function Input ({ label }) {
+export default function Input ({ label, valor, onChange, tipo = 'text' }) {
     return (
         <Label>
             {label}
-            <InputEstilizado type="text" />
+            <InputEstilizado 
+                type={tipo} 
+                value={valor}
+                onChange={e => onChange(e.target.value)}
+            />
         </Label>
     )
 }

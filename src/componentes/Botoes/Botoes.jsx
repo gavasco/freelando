@@ -12,6 +12,7 @@ const BotaoPrimario = styled.button`
     text-align: center;
     box-sizing: border-box;
     cursor: pointer;
+    margin-top: 14px;
     &:hover {
         background-color: ${props => props.theme.cores.dark.b};
         border: 2px solid ${props => props.theme.cores.dark.b};
@@ -33,6 +34,7 @@ const BotaoSecundario = styled.button`
     cursor: pointer;
     text-align: center;
     box-sizing: border-box;
+    margin-top: 14px;
     &:hover {
         border: 2px solid ${props => props.theme.cores.dark.b};
         color: ${props => props.theme.cores.dark.b};

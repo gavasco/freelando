@@ -1,14 +1,15 @@
 import { Container, Row, Col } from "react-grid-system";
-import Cabecalho from "./componentes/Cabecalho/Cabecalho";
-import Card from "./componentes/Card/Card";
-import Estilos from "./componentes/EstilosGlobais/Estilos";
-import Footer from "./componentes/Footer/Footer";
-import Input from "./componentes/Input/Input";
-import ProvedorTema from "./componentes/ProvedorTema/ProvedorTema";
-import Tipografia from "./componentes/Tipografia/Tipografia";
-import Botoes from "./componentes/Botoes/Botoes";
-import ListaSuspensa from "./componentes/ListaSuspensa/ListaSuspensa";
+import Cabecalho from "../componentes/Cabecalho/Cabecalho";
+import Card from "../componentes/Card/Card";
+import Estilos from "../componentes/EstilosGlobais/Estilos";
+import Footer from "../componentes/Footer/Footer";
+import Input from "../componentes/Input/Input";
+import ProvedorTema from "../componentes/ProvedorTema/ProvedorTema";
+import Tipografia from "../componentes/Tipografia/Tipografia";
+import Botoes from "../componentes/Botoes/Botoes";
+import ListaSuspensa from "../componentes/ListaSuspensa/ListaSuspensa";
 
+// Ctrl + k + c (comenta todo o codigo) e Ctrl + k + u (descomenta)
 const estadosBrasileiros = [
   { "text": "Acre", "value": "AC" },
   { "text": "Alagoas", "value": "AL" },
@@ -39,14 +40,14 @@ const estadosBrasileiros = [
   { "text": "Tocantins", "value": "TO" }
 ]
 
-function App() {
+export default function PaginaInicial() {
   return (
     <ProvedorTema>
       <Estilos />
       <Cabecalho />
       <Container style={{ margin:'80px 0'}}>
         <Row justify="center">
-          <Col lg={6} md={8} sm={12}>
+          <Col lg={8} md={8} sm={12}>
             <Card>
               <Tipografia variante='h1' componente='h1' > Crie seu cadastro </Tipografia>
               <Tipografia variante='body' componente='body'>
@@ -97,5 +98,3 @@ function App() {
     </ProvedorTema>
   );
 }
-
-export default App;

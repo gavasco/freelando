@@ -9,6 +9,7 @@ const Label = styled.label`
     flex-direction: column;
     gap: ${props => props.theme.espacamentos.xs};
     position: relative;
+    margin-top: 14px;
 `
 const Button = styled.button`
     border: 1px solid ${props => props.theme.cores.neutras.a};
@@ -23,9 +24,10 @@ const Button = styled.button`
     height: 40px;
     line-height: 17px;
     box-sizing: border-box;
-    font-size: 14px;
+    font-size: 16px;
     width: 100%;
     cursor:  pointer;
+    padding-left: 15px;
     &:focus {
         border-color: ${props => props.theme.cores.focus};
     }
@@ -47,10 +49,16 @@ const Ul = styled.ul`
     font-size: 14px;
     color: ${props => props.theme.cores.neutras.a};
     padding: 0 ${props => props.theme.espacamentos.m};
+    max-height: 200px;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
 `
 const Li = styled.li`
     font-size: 14px;
-    line-height: 17px;
+    line-height: 25px;
     text-align: center;
     border-bottom: 1px solid ${props => props.theme.cores.neutras.a};
     color: ${props => props.focoAtivo ? props.theme.cores.focus : 'inherit'};
@@ -64,7 +72,7 @@ const Li = styled.li`
     }
 `
 
-export default function ListaSuspensa({ titulo, estadosBrasileiros }) {
+export default function ListaSuspensa({ titulo, estadosBrasileiros, valor, onChange }) {
     const [aberta, setAberta] = useState(false);
     const [opcaoFocada, setOpcaoFocada] = useState(null);
     const [opcaoSelecionada, setOpcaoSelecionada] = useState(null);
@@ -78,6 +86,9 @@ export default function ListaSuspensa({ titulo, estadosBrasileiros }) {
                 setOpcaoFocada(focoAntigo => {
                     if (focoAntigo == null) {
                         return 0
+                    }
+                    if (focoAntigo === (estadosBrasileiros.length - 1)) {
+                        return estadosBrasileiros.length - 1
                     }
                     return focoAntigo += 1;
                 })
@@ -95,10 +106,14 @@ export default function ListaSuspensa({ titulo, estadosBrasileiros }) {
                 evento.preventDefault();
                 setOpcaoFocada(null)
                 setAberta(false);
-                setOpcaoSelecionada(estadosBrasileiros[opcaoFocada])
+                onChange(estadosBrasileiros[opcaoFocada])
                 break;
-
-
+            case 'Tab':
+            case 'Escape':
+                evento.preventDefault();
+                setAberta(false);
+                setOpcaoFocada(null)
+                break;
             default:
                 break;
         }
@@ -111,8 +126,10 @@ export default function ListaSuspensa({ titulo, estadosBrasileiros }) {
                 onClick={() => setAberta(!aberta)}
                 aberta={aberta}
                 onKeyDown={manipularTeclado}
+                type="button"
+                
             >
-                {opcaoSelecionada ? opcaoSelecionada.text : "Selecione"}
+                {valor ? valor.text : "Selecione"};
                 <MdKeyboardArrowUp
                     size={20}
                     style={{
@@ -127,7 +144,7 @@ export default function ListaSuspensa({ titulo, estadosBrasileiros }) {
                         <Li
                             key={estado.value}
                             focoAtivo={index === opcaoFocada}
-                            onClick={() => setOpcaoSelecionada(estado)}
+                            onClick={() => onChange(estado)}
                         >
                             {estado.text}
                         </Li>

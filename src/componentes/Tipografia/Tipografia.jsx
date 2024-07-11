@@ -15,21 +15,26 @@ const estilos = {
         font-size: 40px;
         font-weight: 600;
         line-height: 48.76px;
+        margin-top: 0;
+        color: #373737;
     `,
     h2: `
         font-size: 32px;
         font-weight: 600;
         line-height: 39.01px;
+        color: #373737;
     `,
     h3: `
         font-size: 24px;
         font-weight: 500;
         line-height: 29.26px;
+        color: #373737;
     `,
     body: `
         font-size: 20px;
         font-weight: 400;
         line-height: 24.38px;
+        color: #373737;
     `,
     bodyBold: `
         font-size: 20px;
@@ -40,6 +45,7 @@ const estilos = {
         font-size: 16px;
         font-weight: 400;
         line-height: 19.5px;
+        color: #373737;
     `,
     bodyBold2: `
         font-size: 16px;
